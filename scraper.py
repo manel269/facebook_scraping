@@ -145,13 +145,6 @@ def scrape():
 	except:
 		pass
 	
-def main():
-	#Enter your facebook's email id and password here 
-	email = ""
-	password = ""
-	login(email,password)
-	scrape()
-	driver.close()
-	        
-if __name__ == '__main__':
-	main()
+
+	
+

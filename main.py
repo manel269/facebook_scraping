@@ -12,4 +12,4 @@ app = FastAPI()
 @app.get("/{list}")
 async def read_item():
   	scrape()
-	  driver.close()
+	driver.close()

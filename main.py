@@ -4,8 +4,7 @@ from  scraper import scrape
 	email = ""
 	password = ""
 	login(email,password)
-	scrape()
-	driver.close()
+
 	        
 
 app = FastAPI()

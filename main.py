@@ -13,3 +13,5 @@ app = FastAPI()
 async def read_item():
   	scrape()
 	driver.close()
+if __name__ == "__main__":
+    uvicorn.run(app='main:app')

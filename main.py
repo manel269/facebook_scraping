@@ -1,5 +1,5 @@
 from fastapi iport FastAPI
-from 
+from  scraper import scrape
 
 app = FastAPI()
 @app.get("/{list}")

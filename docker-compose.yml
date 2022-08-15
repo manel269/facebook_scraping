@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+
+  # FastAPI
+  user_service:
+    build: ./
+    depends_on:
+      - "user_database"
+    environment:
+      - DATABASE_HOST=user_database
+      - DATABASE_PORT=27017
+      - DATABASE_USERNAME=user
+      - DATABASE_PASSWORD=password1
+      - DATABASE_NAME=users
+      - COLLECTION_NAME=users
+    labels:
+      project.part.name: User Service
+    ports:
+      - "8080:80"  # TEST - allow local testing of api
+    restart: unless-stopped
+    shm_size: '1gb'
+  
+  # MongoDB
+  user_database:
+    build: ./db
+    command: --auth
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: user
+      MONGO_INITDB_ROOT_PASSWORD: password1
+      MONGO_INITDB_DATABASE: users
+      DATABASE_USERNAME: user
+      DATABASE_PASSWORD: password1
+      MONGODB_DATA_DIR: /data/db
+    labels:
+      project.part.name: User Database (Mongo)
+    restart: unless-stopped
+    shm_size: 1gb
+    volumes:
+      - user_db:/data/db
+
+
+volumes:
+  user_db:
